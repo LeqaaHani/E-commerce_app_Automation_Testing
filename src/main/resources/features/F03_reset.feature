@@ -1,3 +1,4 @@
+@smokeTest
 Feature: user should be able to login to the system
   Background: user go to login page
     Given user navigate to login page
