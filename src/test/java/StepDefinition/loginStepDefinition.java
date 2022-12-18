@@ -5,7 +5,6 @@ import io.cucumber.java.en.Given;
 import io.cucumber.java.en.Then;
 import io.cucumber.java.en.When;
 import pages.loginPage;
-import pages.resetPage;
 
 public class loginStepDefinition {
     loginPage loginPage=new loginPage();

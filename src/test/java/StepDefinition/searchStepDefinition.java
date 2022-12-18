@@ -4,35 +4,34 @@ import io.cucumber.java.en.And;
 import io.cucumber.java.en.Then;
 import io.cucumber.java.en.When;
 import org.testng.asserts.SoftAssert;
-import pages.searchPage;
+import pages.homePage;
 
 public class searchStepDefinition {
-    searchPage searchPage=new searchPage();
+    homePage search=new homePage();
 
     @When("user click on search field")
     public void searchFieldClick()
     {
-        searchPage.searchField().click();
+        search.searchField().click();
     }
     @And("user enter the product name")
     public void searchButtonClick()
     {
-        searchPage.searchField().sendKeys("book");
-        searchPage.searchButton().click();
+        search.searchField().sendKeys("book");
+        search.searchButton().click();
     }
     @Then("user find the product in the search result")
     public void searchResult()
     {
         //First Assertion
-        SoftAssert soft=new SoftAssert();
         String expectedResultURL="https://demo.nopcommerce.com/search?q=";
         String actualResultURL=Hooks.driver.getCurrentUrl();
-        soft.assertTrue(actualResultURL.contains(expectedResultURL));
-        for (int i=0;i<searchPage.searchProductItem().size();i++)
+        Hooks.soft.assertTrue(actualResultURL.contains(expectedResultURL));
+        for (int i=0;i<search.searchProductItem().size();i++)
         {
-            String item = searchPage.searchProductItem().get(i).getText().toLowerCase();
-            soft.assertTrue(item.contains("book"));
+            String item = search.searchProductItem().get(i).getText().toLowerCase();
+            Hooks.soft.assertTrue(item.contains("book"));
         }
-        soft.assertAll();
+        Hooks.soft.assertAll();
     }
 }
