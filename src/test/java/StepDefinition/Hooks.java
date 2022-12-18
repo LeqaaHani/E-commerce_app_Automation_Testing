@@ -14,6 +14,8 @@ public class Hooks {
     public static SoftAssert soft=new SoftAssert();
     @Before
     public static void openBrowser(){
+       // String chromepath=System.getProperty("user.dir")+"\\src\\main\\resources\\chromedriver.exe";
+        //System.setProperty("webdriver.chrome.driver",chromepath);
         WebDriverManager.chromedriver().setup();
         driver=new ChromeDriver();
         driver.manage().window().maximize();
